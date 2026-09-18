@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: nirman-setu
+    runtime: node
+    rootDir: .
+    plan: free
+    buildCommand: npm install && npm run build && npm --prefix server install
+    startCommand: node server/src/index.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: PORT
+        value: "10000"
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES
+        value: "7d"
+      - key: CLIENT_URL
+        sync: false
+      - key: DEMO_MODE
+        value: "true"
+      - key: OTP_PROVIDER
+        value: console
