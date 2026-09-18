@@ -87,13 +87,15 @@ export async function runSeed() {
   console.log('  Customer login:    9000000001 / PIN 1234  (OTP 123456)')
   console.log('  Professional login: 9000000002 / PIN 1234')
   console.log('  Government login:   9000000003 / PIN 1234')
-  await mongoose.disconnect()
 }
 
 // Auto-seed only when this file is invoked directly (`npm run seed`).
+// When imported (auto-seed on boot), the caller keeps the connection open.
 const isDirect = process.argv[1] && process.argv[1].endsWith('seed.js')
 if (isDirect) {
-  runSeed().catch((err) => { console.error(err); process.exit(1) })
+  runSeed()
+    .finally(() => mongoose.disconnect())
+    .catch((err) => { console.error(err); process.exit(1) })
 }
 
 export default runSeed
