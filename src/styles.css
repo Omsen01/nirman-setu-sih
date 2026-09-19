@@ -4030,3 +4030,11 @@ img {
 @media (max-width: 480px) {
   .dash-grid-3, .dash-grid-4 { grid-template-columns: 1fr; }
 }
+
+.ns-logo {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar .logo .ns-logo { height: 34px !important; }
+}
