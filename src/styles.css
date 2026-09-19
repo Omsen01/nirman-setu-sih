@@ -1816,6 +1816,8 @@ img {
     gap: 40px;
   }
 
+  .hero .container > * { min-width: 0; }
+
   .hero h1 { font-size: 2.8rem; }
   
   .hero-visual { max-width: 500px; margin: 0 auto; }
@@ -4035,6 +4037,36 @@ img {
   max-width: 100%;
 }
 
+/* Brand logo — small, top-left, sharp, never stretched/cropped.
+   Desktop ~96px wide; tablet/mobile scale down while staying top-left.
+   Hero is padded below the fixed navbar so content never overlaps. */
 @media (max-width: 768px) {
-  .navbar .logo .ns-logo { height: 34px !important; }
+  .navbar .logo .ns-logo { width: 68px !important; }
+  .hero { padding-top: 122px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar .logo .ns-logo { width: 84px !important; }
+  .hero { padding-top: 136px; }
+}
+
+/* Keep the logo at the top-left corner, clear of the hero below. */
+@media (min-width: 1025px) {
+  .navbar { padding: 0; }
+  .navbar .container {
+    padding: 0 24px;
+    max-width: none;
+    display: flex;
+    align-items: center;
+  }
+  .navbar .logo {
+    margin: 20px 0;
+  }
+  .navbar .logo .ns-logo {
+    width: 96px !important;
+    height: auto !important;
+    object-fit: contain;
+    display: block;
+  }
+  .hero { padding-top: 150px; }
 }

@@ -39,9 +39,8 @@ export default function Navbar() {
     <>
       <nav className={`navbar ${scrolled || !isHome ? 'scrolled' : ''}`}>
         <div className="container">
-          <Link to="/" className="logo">
-            <Logo size={40} className="logo-img" />
-            NIRMAN <span>SETU</span>
+          <Link to="/" className="logo" aria-label="Nirman SETU">
+            <Logo width={100} className="logo-img" />
           </Link>
 
           <ul className="nav-links">
